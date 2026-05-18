@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 64" role="img" aria-labelledby="title desc">
+  <title id="title">DeepLearning.AI and Stanford Online</title>
+  <desc id="desc">Compact certificate issuer mark for DeepLearning.AI and Stanford Online.</desc>
+  <rect width="220" height="64" rx="10" fill="#ffffff"/>
+  <g fill="none" stroke="#0f766e" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+    <path d="M24 42V22"/>
+    <path d="M24 22h12a10 10 0 0 1 0 20H24"/>
+    <path d="M50 42V22"/>
+    <path d="M50 22h12a10 10 0 0 1 0 20H50"/>
+    <path d="M84 42 72 22 60 42"/>
+    <path d="M66 34h12"/>
+  </g>
+  <text x="103" y="29" fill="#111827" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700">DeepLearning.AI</text>
+  <text x="103" y="47" fill="#8c1515" font-family="Georgia, serif" font-size="15" font-weight="700">Stanford Online</text>
+</svg>

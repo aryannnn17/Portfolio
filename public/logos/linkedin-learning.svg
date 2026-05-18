@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 204 64" role="img" aria-labelledby="title desc">
+  <title id="title">LinkedIn Learning</title>
+  <desc id="desc">Compact LinkedIn Learning certificate issuer mark.</desc>
+  <rect width="204" height="64" rx="10" fill="#ffffff"/>
+  <rect x="18" y="16" width="32" height="32" rx="5" fill="#0a66c2"/>
+  <text x="25" y="39" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="800">in</text>
+  <text x="64" y="30" fill="#111827" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">LinkedIn</text>
+  <text x="64" y="48" fill="#5f6368" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">Learning</text>
+</svg>
