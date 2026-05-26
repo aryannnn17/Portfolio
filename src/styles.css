@@ -483,12 +483,20 @@ svg {
   object-fit: cover;
 }
 
-.availability,
+.availability {
+  margin: 0 0 0.82rem;
+  color: var(--accent-2);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.65rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
 .eyebrow {
   margin: 0 0 0.82rem;
   color: var(--accent-2);
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
-  font-size: 0.7rem;
+  font-size: 1rem;
   font-weight: 900;
   text-transform: uppercase;
 }
@@ -502,7 +510,7 @@ svg {
 
 .identity-title {
   max-width: 28ch;
-  margin: 0.42rem 0 1rem;
+  margin: 0.42rem 0 0.3rem;
   color: var(--muted);
   font-size: 0.85rem;
 }
@@ -609,6 +617,9 @@ svg {
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
+  justify-content: center;
+  margin-top: 0;
+  margin-bottom: 0.8rem;
 }
 
 .contact-strip span {
@@ -1004,7 +1015,7 @@ svg {
 .project-topline span {
   color: var(--accent-2);
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
-  font-size: 0.7rem;
+  font-size: 0.85rem;
   font-weight: 900;
 }
 
@@ -1113,67 +1124,68 @@ svg {
   font-size: 1rem;
 }
 
-.cert-list {
+.cert-grid {
   display: grid;
-  gap: 0.62rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
 }
 
 .cert-card {
-  display: grid;
-  grid-template-columns: 74px minmax(0, 1fr);
-  align-items: center;
-  gap: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 220px;
+  overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--surface);
-  padding: 0.72rem;
+  box-shadow: none;
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
 }
 
-.cert-logo {
+.cert-card:hover {
+  border-color: color-mix(in srgb, var(--accent) 58%, transparent);
+  box-shadow: var(--glow);
+  transform: translateY(-2px);
+}
+
+.cert-card > img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  object-position: center;
+  padding: 0;
+  background: var(--bg-soft);
+  display: block;
+  margin: 0 auto;
+}
+
+.cert-body {
   display: grid;
-  width: 68px;
-  height: 48px;
-  place-items: center;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: #ffffff;
-  padding: 0.35rem;
+  align-content: start;
+  padding: 0.95rem;
 }
 
-.cert-logo img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-}
-
-.cert-content {
-  min-width: 0;
-}
-
-.cert-card h4 {
-  margin: 0 0 0.18rem;
-  font-size: 0.86rem;
-  line-height: 1.24;
+.cert-card h3 {
+  margin: 0 0 0.32rem;
+  font-size: 0.94rem;
+  line-height: 1.28;
 }
 
 .cert-card p {
-  margin: 0;
+  margin: 0 0 0.5rem;
   color: var(--muted);
   font-size: 0.78rem;
 }
 
-.cert-card span {
-  display: inline-flex;
-  width: fit-content;
-  margin-top: 0.44rem;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  color: var(--accent-2);
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
-  font-size: 0.66rem;
-  font-weight: 900;
-  padding: 0.26rem 0.42rem;
-  text-transform: uppercase;
+.cert-card a {
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cert-card a:hover {
+  text-decoration: underline;
 }
 
 .filter-bar {
@@ -1218,14 +1230,14 @@ svg {
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.85rem;
 }
 
 .project-card {
   display: grid;
-  grid-template-columns: 190px minmax(0, 1fr);
-  min-height: 220px;
+  grid-template-rows: 200px minmax(0, 1fr);
+  min-height: 280px;
   overflow: hidden;
   box-shadow: none;
   transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
@@ -1234,10 +1246,9 @@ svg {
 .project-card > img {
   width: 100%;
   height: 100%;
-  min-height: 220px;
-  object-fit: contain;
-  padding: 0.35rem;
-  border-right: 1px solid var(--line);
+  object-fit: cover;
+  padding: 0;
+  border-bottom: 1px solid var(--line);
   background: var(--bg-soft);
 }
 
@@ -1552,13 +1563,43 @@ svg {
 @media (max-width: 620px) {
   .project-card {
     grid-template-columns: 1fr;
+    grid-template-rows: 120px minmax(0, 1fr);
+    min-height: 200px;
+    gap: 0.3rem;
   }
 
   .project-card > img {
-    height: 170px;
-    min-height: 170px;
+    height: 120px;
+    min-height: 120px;
     border-right: 0;
-    border-bottom: 1px solid var(--line);
+    border-bottom: 0;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cert-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-body {
+    padding: 0.5rem;
+  }
+
+  .project-topline {
+    margin-bottom: 0.3rem;
+    margin-top: 0;
+  }
+
+  .project-card h3 {
+    font-size: 0.85rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .project-card p {
+    font-size: 0.72rem;
+    margin-bottom: 0.3rem;
   }
 }
 
@@ -1578,6 +1619,15 @@ svg {
   .avatar-wrap img {
     width: 100px;
     height: 100px;
+  }
+
+  .contact-strip {
+    justify-content: center;
+    gap: 0.4rem;
+  }
+
+  .contact-strip span {
+    font-size: 0.7rem;
   }
 
   .hero-actions,
@@ -2279,6 +2329,10 @@ body::before {
   .hero-two-card .identity-card,
   .hero-two-card .intro-panel {
     min-height: auto;
+  }
+
+  .contact-strip {
+    justify-content: center;
   }
 }
 

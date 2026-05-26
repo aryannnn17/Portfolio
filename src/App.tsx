@@ -18,7 +18,7 @@ import {
 import { useEffect, useRef, useState } from "react";
 
 type Theme = "dark" | "light";
-type ProjectCategory = "all" | "ml" | "swe" | "ai";
+type ProjectCategory = "all" | "ml" | "swe" | "ai" | "embedded";
 
 type Project = {
   title: string;
@@ -54,14 +54,13 @@ type SkillGroup = {
 type Certification = {
   title: string;
   issuer: string;
-  status: string;
-  logo: string;
-  logoAlt: string;
+  image: string;
+  link: string;
 };
 
 const navItems = ["Summary", "Experience", "Education", "Projects", "Skills", "Contact"];
 const resumePath = "/Aryan_Bhagat_Resume.pdf";
-const profileImage = "/profile-aryan.webp";
+const profileImage = "/profile.jpeg";
 const profileNavImage = "/profile-aryan-nav-portrait.webp";
 const email = "aryanbhagat2602@gmail.com";
 const githubUrl = "https://github.com/aryannnn17";
@@ -90,7 +89,7 @@ const saveThemePreference = (theme: Theme) => {
 
 const projects: Project[] = [
   {
-    title: "Scalable Notification System",
+    title: "Distributed Notification System",
     category: "swe",
     image: "/project-notification-system.png",
     description:
@@ -99,7 +98,7 @@ const projects: Project[] = [
     link: "https://github.com/aryannnn17/notification-system"
   },
   {
-    title: "Smart Recipe Tagger",
+    title: "Smart Recipe Tagger - AI Recipe Generator",
     category: "ai",
     image: "/project-smart-recipe-tagger.png",
     description:
@@ -108,7 +107,7 @@ const projects: Project[] = [
     link: "https://github.com/aryannnn17/Smart-Recipe-Tagger"
   },
   {
-    title: "FactShield",
+    title: "FactShield – Fake News Detection Platform",
     category: "ml",
     image: "/project-factshield.png",
     description:
@@ -117,7 +116,7 @@ const projects: Project[] = [
     link: "https://factshield-three.vercel.app"
   },
   {
-    title: "Cold Email Generator",
+    title: "RAG-Based Personalized Outreach Engine",
     category: "ai",
     image: "/project-email.png",
     description:
@@ -139,9 +138,34 @@ const projects: Project[] = [
     category: "swe",
     image: "/project-compiler.png",
     description:
-      "Browser-based compiler for JavaScript, Python, TypeScript, PHP, Java, and C# that compiles and runs code in real-time using WebAssembly and Docker.",
+      "Browser-based compiler for Python, TypeScript, PHP, Java, and C# that compiles and runs code in real-time using WebAssembly and Docker.",
     stack: ["React", "Chakra UI", "Tailwind CSS", "JavaScript"],
     link: "https://aryannnn17.github.io/online_compiler_reactjs/"
+  },{
+    title: "Smart BLE Payment Soundbox",
+    category: "embedded",
+    image: "/project-paymentBox.png",
+    description:
+        "Embedded firmware on Nordic nRF52840 using Zephyr RTOS, implementing custom GATT services, MTU optimization, and low-latency wireless transaction communication.",
+    stack: ["Zephyr RTOS", "Quectel EVK-M8", "Nordic nRF52"],
+    link: "https://github.com/aryannnn17/Internship-Indiesemic/tree/main/Payment_Soundbox_using_BLE_Quectelboard_ILI9341"
+  },
+  {
+    title: "BLE-Enabled Digital Examination Terminal",
+    category: "embedded",
+    image: "/project-examDevice.png",
+    description:
+        "Featuring real-time response management, secure submission workflows, EEPROM persistence, and a custom embedded UI for low-latency exam interaction.",
+    stack: ["EEPROM", "LCD1602", "Keypad Interface"],
+    link: "https://github.com/aryannnn17/Internship-Indiesemic/tree/main/LCD1602_ExamDevice"
+  },{
+    title: "ISC SX126x LoRa Communication Framework",
+    category: "embedded",
+    image: "/project-LoRa.jpeg",
+    description:
+        "Cross-platform LoRa communication framework for SX126x modules, supporting Linux, ESP-IDF, and Arduino environments with unified configuration and packet handling.",
+    stack: ["SX1262", "SDK DevKit", "Arduino"],
+    link: "https://github.com/aryannnn17/Internship-Indiesemic/tree/main/ISC_SX126x"
   }
 ];
 
@@ -209,7 +233,7 @@ const education: Education[] = [
     school: "California State University, East Bay",
     date: "Aug 2024 - May 2026",
     place: "Hayward, CA",
-    detail: "GPA 3.9/4.0",
+    detail: "GPA 3.93/4.0",
     logo: "/logos/csueastbay.png"
   },
   {
@@ -245,23 +269,20 @@ const certifications: Certification[] = [
   {
     title: "Machine Learning Specialization",
     issuer: "Andrew Ng, DeepLearning.AI - Stanford Online",
-    status: "https://coursera.org/share/ee5e302b655a624c7c3207dc48abc37f",
-    logo: "/logos/deeplearning-stanford.svg",
-    logoAlt: "DeepLearning.AI and Stanford Online"
+    image: "/cert-ml.png",
+    link: "https://coursera.org/share/ee5e302b655a624c7c3207dc48abc37f"
   },
   {
     title: "Introduction to Large Language Models",
     issuer: "Google Cloud",
-    status: "https://www.coursera.org/account/accomplishments/verify/FADDCPVNPY9K",
-    logo: "/logos/google-cloud.svg",
-    logoAlt: "Google Cloud"
+    image: "/cert-llm.png",
+    link: "https://coursera.org/share/5967dd2de31c7e6050810bf738d70da6"
   },
   {
-    title: "Next.js: Creating and Hosting a Full-Stack Site",
-    issuer: "LinkedIn Learning",
-    status: "https://www.linkedin.com/learning/certificates/029ef9d0ec32b84a0fa0c28b8d15683832488453921c9490dcbf66d181322fa2?trk=share_certificate",
-    logo: "/logos/linkedin-learning.svg",
-    logoAlt: "LinkedIn Learning"
+    title: "Neural Networks and Deep Learning",
+    issuer: "Andrew Ng, DeepLearning.AI",
+    image: "/cert-NN-and-DL.png",
+    link: "https://coursera.org/share/771d60316629ed624ab247234101a946"
   }
 ];
 
@@ -335,9 +356,11 @@ function App() {
               <div className="avatar-wrap">
                 <img src={profileImage} alt="Aryan Bhagat" />
               </div>
-              <p className="availability">OPEN TO SWE/ML ROLES</p>
               <h1 id="hero-title">Aryan Bhagat</h1>
               <p className="identity-title">Engineer who makes things happen.</p>
+              <div className="contact-strip">
+                <span>San Francisco, CA</span>
+              </div>
               <div className="quick-links" aria-label="Social links">
                 <a href={githubUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
                   <Github aria-hidden="true" />
@@ -367,11 +390,6 @@ function App() {
                   <ArrowUpRight aria-hidden="true" />
                 </a>
               </div>
-              <div className="contact-strip">
-                <span>San Francisco, CA</span>
-                <span>Python / C++ / TypeScript</span>
-                <span>RAG / APIs / ML</span>
-              </div>
             </article>
           </div>
         </section>
@@ -392,18 +410,9 @@ function App() {
                 reason through data and model behavior, and keep systems understandable enough to operate.
                 My strongest fit is early-career SWE, ML engineering, and AI application roles.
               </p>
-              <div className="summary-flow" aria-label="Engineering workflow">
-                <span>React</span>
-                <i />
-                <span>APIs</span>
-                <i />
-                <span>RAG</span>
-                <i />
-                <span>Evaluation</span>
-              </div>
               <div className="summary-proof-grid">
                 <div>
-                  <strong>3.9/4.0</strong>
+                  <strong>3.93/4.0</strong>
                   <span>M.S. Computer Science GPA</span>
                 </div>
                 <div>
@@ -514,20 +523,16 @@ function App() {
                   <h3>Credential roadmap</h3>
                 </div>
               </div>
-              <div className="cert-list">
+              <div className="cert-grid">
                 {certifications.map((cert) => (
                   <article className="cert-card" key={cert.title}>
-                    <div className="cert-logo">
-                      <img src={cert.logo} alt={`${cert.logoAlt} logo`} />
-                    </div>
-                    <div className="cert-content">
-                      <h4>{cert.title}</h4>
+                    <img src={cert.image} alt={`${cert.title} certificate`} />
+                    <div className="cert-body">
+                      <h3>{cert.title}</h3>
                       <p>{cert.issuer}</p>
-                      <span>
-                        <a target="_blank" rel="noopener noreferrer" href={cert.status}>
-                          View Credential
-                        </a>
-                      </span>
+                      <a href={cert.link} target="_blank" rel="noopener noreferrer" aria-label={`Open ${cert.title}`}>
+                        View Credential
+                      </a>
                     </div>
                   </article>
                 ))}
@@ -544,7 +549,7 @@ function App() {
             </div>
             <div className="project-actions">
               <div className="filter-bar" aria-label="Project filters">
-                {(["all", "ai", "ml", "swe"] as ProjectCategory[]).map((category) => (
+                {(["all", "ai", "ml", "swe", "embedded"] as ProjectCategory[]).map((category) => (
                   <button
                     key={category}
                     className={filter === category ? "is-active" : ""}
@@ -552,7 +557,7 @@ function App() {
                     aria-pressed={filter === category}
                     onClick={() => setFilter(category)}
                   >
-                    {category.toUpperCase()}
+                    {category === "embedded" ? "EMBEDDED" : category === "ai" ? "AI" : category === "ml" ? "ML" : category === "swe" ? "SWE" : "ALL"}
                   </button>
                 ))}
               </div>
