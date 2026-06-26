@@ -59,7 +59,7 @@ type Certification = {
 };
 
 const navItems = ["Summary", "Experience", "Education", "Projects", "Skills", "Contact"];
-const resumePath = "/Aryan_Bhagat_Resume.pdf";
+const resumePath = "/Aryan_Bhagat_AI_Engineer_Resume.pdf";
 const profileImage = "/profile.jpeg";
 const profileNavImage = "/profile-aryan-nav-portrait.webp";
 const email = "aryanbhagat2602@gmail.com";
